@@ -1,0 +1,10 @@
+<div id="<%= dom_id newsletter_subscriber %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= newsletter_subscriber.email %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Confirmed:</strong>
+    <%= newsletter_subscriber.confirmed? ? "Yes" : "No" %>
+  </div>
+</div>

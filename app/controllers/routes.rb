@@ -1,0 +1,1 @@
+resources :newsletter_subscribers, only: [:new, :create, :show]

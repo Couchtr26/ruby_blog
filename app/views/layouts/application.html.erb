@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Ruby Blog" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <% if notice %>
+      <div class+"bg-green-100 text-green-800 p-2 mb-4 rounded">
+        <%= notice %>
+      </div>
+    <% elsif alert %>
+      <div class="bg-red-100 text-red-800 p-2 mb-4 rounded">
+        <%= alert %>
+      </div>
+    <% end %>        
+    
+    <aside>
+    <div class="bg-white shadow-md rounded p-4 my-6">
+      <h2 class="text-xl font-semibold mb-2">📬 Subscribe to our Newsletter</h2>
+
+      <%= form_with model: NewsletterSubscriber.new, url: newsletter_subscribers_path, local: true do |form| %>
+        <div class="mb-2">
+          <%= form.email_field :email, placeholder: "Enter your email", class: "w-full p-2 border rounded" %>
+        </div>
+        
+        <%= form.hidden_field :confirmed, value: false %>
+
+        <div>
+          <%= form.submit "Subscribe", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+        </div>
+      <% end %>  
+
+        <% if notice %>
+          <div class="bg-green-100 text-green-800 p-2 mb-4 rounded">
+            <%= notice %>
+          </div>    
+        <% end %>
+      </div>      
+    </aside>
+  </body>
+</html>
