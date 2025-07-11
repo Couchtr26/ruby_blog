@@ -10,11 +10,11 @@ Newsletter subscription to keep readers updated
 
 Getting Started
 Prerequisites
-Ruby (version X.X.X)
+Ruby (version 3.4.4)
 
 Bundler (gem install bundler)
 
-SQLite3 (or your chosen database)
+SQLite3 (your chosen database)
 
 Installation
 Clone the repository:
