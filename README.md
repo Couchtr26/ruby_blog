@@ -60,3 +60,4 @@ Feel free to fork this project and submit pull requests. Any contributions, sugg
 License
 This project is licensed under the MIT License.
 
+© 2025 Thomas Couch — Grey Knight Software
